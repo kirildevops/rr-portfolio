@@ -1,9 +1,9 @@
 const BlogPage = () => {
-    return (
-        <section>
-            <h2 className="text-3xl text-white font-bold mb-8">My blog</h2>
-        </section>
-    );
+  return (
+    <section>
+      <h2 className="text-3xl text-white font-bold mb-8">My blog</h2>
+    </section>
+  )
 }
 
-export default BlogPage;
+export default BlogPage

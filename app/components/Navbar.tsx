@@ -10,6 +10,7 @@ const Navbar = () => {
           className="flex items-center gap-2 text-lg font-bold text-blue-300"
         >
           <FaLaptopCode className="text-blue-400 text-xl" />
+          <span>React Router Portfolio</span>
         </NavLink>
       </div>
     </nav>
