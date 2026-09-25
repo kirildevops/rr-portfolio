@@ -1,9 +1,10 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
-    index("routes/home/index.tsx"),
+    index('routes/home/index.tsx'),
     route('about', './routes/about/index.tsx'),
     route('contact', './routes/contact/index.tsx'),
     route('projects', './routes/projects/index.tsx'),
     route('blog', './routes/blog/index.tsx'),
+    route('/.well-known/appspecific/com.chrome.devtools.json', './routes/debug/null.tsx')
 ] satisfies RouteConfig;
