@@ -12,6 +12,16 @@ const Navbar = () => {
           <FaLaptopCode className="text-blue-400 text-xl" />
           <span>React Router Portfolio</span>
         </NavLink>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-6">
+          <div className="space-x-4 text-sm text-gray-300">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/projects">Projects</NavLink>
+            <NavLink to="/blog">Blog</NavLink>
+            <NavLink to="/about">About</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
+          </div>
+        </div>
       </div>
     </nav>
   )
