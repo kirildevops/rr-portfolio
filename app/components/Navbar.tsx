@@ -56,13 +56,53 @@ const Navbar = () => {
         <div className="md:hidden flex items-center gap-4">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-blue-400 text-xl"
+            className="text-blue-400 text-xl cursor-pointer"
             title="Menu"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
+      {/* Mobile Nav */}
+      {menuOpen && (
+        <div className="bg-gray-800 border-t border-gray-700 px-6 py-4 space-y-2 space-x-4 text-center md:hidden">
+          <NavLink
+            className={({ isActive }) => (isActive ? active : base)}
+            onClick={() => setMenuOpen(false)}
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? active : base)}
+            onClick={() => setMenuOpen(false)}
+            to="/projects"
+          >
+            Projects
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? active : base)}
+            onClick={() => setMenuOpen(false)}
+            to="/blog"
+          >
+            Blog
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? active : base)}
+            onClick={() => setMenuOpen(false)}
+            to="/about"
+          >
+            About
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? active : base)}
+            onClick={() => setMenuOpen(false)}
+            to="/contact"
+          >
+            Contact
+          </NavLink>
+        </div>
+      )}
     </nav>
   )
 }
