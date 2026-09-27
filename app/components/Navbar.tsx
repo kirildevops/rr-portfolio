@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router'
-import { FaLaptopCode } from 'react-icons/fa'
+import { FaLaptopCode, FaTimes, FaBars } from 'react-icons/fa'
+;('react-icons/fa')
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
   const base = 'transition hover:text-blue-400'
   const active = 'text-blue-400 font-semibold'
 
@@ -49,6 +52,15 @@ const Navbar = () => {
               Contact
             </NavLink>
           </div>
+        </div>
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-blue-400 text-xl"
+            title="Menu"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
       </div>
     </nav>
