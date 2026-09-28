@@ -9,7 +9,18 @@ const Hero = () => {
         developers
       </p>
       <div className="flex justify-center gap-4">
-        <Link to="/projects">View Projects</Link>
+        <Link
+          to="/projects"
+          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+        >
+          View Projects
+        </Link>
+        <Link
+          to="/contact"
+          className=" border border-blue-400 text-white px-6 py-2 rounded hover:bg-blue-600 hover:text-white transition"
+        >
+          Contact Me
+        </Link>
       </div>
     </header>
   )
