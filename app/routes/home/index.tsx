@@ -8,11 +8,14 @@ export function meta({}: Route.MetaArgs) {
   ]
 }
 
+const text =
+  'I build friendly web experiences and help others become confident modern developers'
+
 export default function Home() {
   // console.log('blah')
   return (
     <section>
-      <Hero />
+      <Hero name="Kd" text={text} />
     </section>
   )
 }
