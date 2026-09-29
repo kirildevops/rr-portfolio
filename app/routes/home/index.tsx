@@ -9,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   // console.log('blah')
-  return <section>Homepage</section>
+  return <>Homepage</>
 }
