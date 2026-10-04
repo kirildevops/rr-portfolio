@@ -19,7 +19,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   const { projects } = loaderData as { projects: Project[] }
 
   const [currentPage, setCurrentPage] = useState(1)
-  const projectsPerPage = 2
+  const projectsPerPage = 5
   // calc total pages
   const totalPages = Math.ceil(projects.length / projectsPerPage)
   // get current pages projects
