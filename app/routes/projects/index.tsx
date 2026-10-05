@@ -16,16 +16,27 @@ export async function loader({
 }
 
 const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
-  const { projects } = loaderData as { projects: Project[] }
-
+  const [selectedCategory, setSelectedCategory] = useState('All')
   const [currentPage, setCurrentPage] = useState(1)
   const projectsPerPage = 5
+
+  const { projects } = loaderData as { projects: Project[] }
+
+  //get unique categories
+  const categories = ['All', ...new Set(projects.map(p => p.category))]
+
+  // filter projects based on category
+  const fP =
+    selectedCategory === 'All'
+      ? projects
+      : projects.filter(p => p.category === selectedCategory)
+
   // calc total pages
-  const totalPages = Math.ceil(projects.length / projectsPerPage)
+  const totalPages = Math.ceil(fP.length / projectsPerPage)
   // get current pages projects
   const indexOfLast = currentPage * projectsPerPage
   const indexOfFirst = indexOfLast - projectsPerPage
-  const currentProjects = projects.slice(indexOfFirst, indexOfLast)
+  const currentProjects = fP.slice(indexOfFirst, indexOfLast)
 
   return (
     <>
