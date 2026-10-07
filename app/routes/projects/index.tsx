@@ -41,6 +41,22 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
   return (
     <>
       <h2 className="text-3xl text-white font-bold mb-8">My Projects</h2>
+
+      <div className="flex flex-wrap gap-2 mb-8">
+        {categories.map(cat => (
+          <button
+            key={cat}
+            onClick={() => {
+              setSelectedCategory(cat)
+              setCurrentPage(1)
+            }}
+            className={`px-3 py-1 rounded text-sm cursor-pointer ${selectedCategory === cat ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-200'}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       <div className="grid gap-6 sm:grid-cols-2">
         {currentProjects.map(project => (
           <ProjectCard key={project.id} project={project} />
