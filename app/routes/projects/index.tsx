@@ -6,6 +6,13 @@ import type { Project } from '~/types'
 import ProjectCard from '~/components/ProjectCard'
 import Pagination from '~/components/Pagination'
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: 'RR Portfolio | Projects' },
+    { name: 'description', content: 'My projects portfolio!' },
+  ]
+}
+
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Project[] }> {

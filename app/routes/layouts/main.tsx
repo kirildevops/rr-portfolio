@@ -1,4 +1,13 @@
+import type { Route } from '../about/+types'
+
 import { Outlet } from 'react-router'
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: 'RR Portfolio' },
+    { name: 'description', content: 'Welcome to React Router!' },
+  ]
+}
 
 const MainLayout = () => {
   return (
