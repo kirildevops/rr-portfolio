@@ -1,3 +1,4 @@
+import FeaturedProjects from '~/components/FeaturedProjects'
 import type { Route } from './+types/index'
 
 export function meta({}: Route.MetaArgs) {
@@ -7,7 +8,12 @@ export function meta({}: Route.MetaArgs) {
   ]
 }
 
-export default function Home() {
-  // console.log('blah')
-  return <>Homepage</>
+const HomePage = () => {
+  return (
+    <>
+      <FeaturedProjects />
+    </>
+  )
 }
+
+export default HomePage
