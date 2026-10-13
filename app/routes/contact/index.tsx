@@ -3,10 +3,26 @@ import { Form } from 'react-router'
 
 export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData()
-  const name = formData.get('name')
-  const email = formData.get('email')
-  const subject = formData.get('subject')
-  const message = formData.get('message')
+  const name = formData.get('name') as string
+  const email = formData.get('email') as string
+  const subject = formData.get('subject') as string
+  const message = formData.get('message') as string
+
+  const errors: Record<string, string> = {}
+
+  if (!name) errors.name = 'Name is required'
+  if (!email) {
+    errors.email = 'Email is required'
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errors.email = 'Invalid email format'
+  }
+  if (!subject) errors.subject = 'Subject is required'
+  if (!message) errors.message = 'Message is required'
+
+  if (Object.keys(errors).length > 0) {
+    return { errors }
+  }
+
   const data = {
     name,
     email,
@@ -17,6 +33,7 @@ export async function action({ request }: Route.ActionArgs) {
 }
 
 const ContactPage = ({ actionData }: Route.ComponentProps) => {
+  const errors = actionData?.errors || {}
   return (
     <div className="max-w-3xl mx-auto mt-12 px-6 py-8 bg-gray-900">
       <h2 className="text-3xl font-bold text-white mb-8 text-center">
@@ -29,7 +46,7 @@ const ContactPage = ({ actionData }: Route.ComponentProps) => {
         </p>
       ) : null}
 
-      <Form method="post" className="space-y-6">
+      <Form method="post" className="space-y-3">
         <div>
           <label
             htmlFor="name"
@@ -44,6 +61,7 @@ const ContactPage = ({ actionData }: Route.ComponentProps) => {
             className="w-full mt-1 px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-100"
           />
         </div>
+        {errors.name && <p className="text-red-400 text-sm">{errors.name}</p>}
         <div>
           <label
             htmlFor="email"
@@ -58,6 +76,7 @@ const ContactPage = ({ actionData }: Route.ComponentProps) => {
             className="w-full mt-1 px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-100"
           />
         </div>
+        {errors.email && <p className="text-red-400 text-sm">{errors.email}</p>}
         <div>
           <label
             htmlFor="subject"
@@ -72,6 +91,9 @@ const ContactPage = ({ actionData }: Route.ComponentProps) => {
             className="w-full mt-1 px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-100"
           />
         </div>
+        {errors.subject && (
+          <p className="text-red-400 text-sm">{errors.subject}</p>
+        )}
         <div>
           <label
             htmlFor="message"
@@ -85,7 +107,9 @@ const ContactPage = ({ actionData }: Route.ComponentProps) => {
             className="resize-none [field-sizing:content] min-h-30 w-full mt-1 px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-100"
           />
         </div>
-
+        {errors.message && (
+          <p className="text-red-400 text-sm">{errors.message}</p>
+        )}
         <button className="w-full bg-blue-600 text-white py-2 rounded-lg bg-blue-600 hover:bg-blue-700 cursor-pointer">
           Send Message
         </button>
