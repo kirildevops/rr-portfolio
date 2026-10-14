@@ -1,7 +1,10 @@
 import type { Route } from './+types'
+import type { PostMeta } from '~/types'
 import { Link } from 'react-router'
 
-export async function loader({ request }: Route.LoaderArgs): Promise<any> {
+export async function loader({
+  request,
+}: Route.LoaderArgs): Promise<{ posts: PostMeta[] }> {
   const url = new URL('/posts-meta.json', request.url)
   const res = await fetch(url.href)
 
