@@ -1,3 +1,6 @@
+import ReactMarkdown from 'react-markdown'
+import type { Route } from './+types/details'
+
 const BlogDetailsPage = () => {
   return (
     <>
