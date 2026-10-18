@@ -35,11 +35,11 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
   // console.log(postMeta, markdown)
 
   return (
-    <>
-      <h1 className="text-3xl font-semibold text-blue-400 hover:bg-blue-100">
-        Blog
+    <div className="max-w-3xl mx-auto px-6 py-12 bg-gray-900">
+      <h1 className="text-3xl font-bold text-blue-400 mb-2">
+        {postMeta.title}
       </h1>
-    </>
+    </div>
   )
 }
 
