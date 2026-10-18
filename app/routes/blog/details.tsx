@@ -47,7 +47,7 @@ const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
           year: 'numeric',
         })}
       </p>
-      <div className="max-w-none mb-12">
+      <div className="prose prose-invert max-w-none mb-12">
         <ReactMarkdown>{markdown}</ReactMarkdown>
         <Link
           to="/blog"
