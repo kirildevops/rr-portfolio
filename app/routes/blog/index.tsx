@@ -23,7 +23,7 @@ export async function loader({
 const BlogPage = ({ loaderData }: Route.ComponentProps) => {
   const { posts } = loaderData
   const [currPage, setCurrPage] = useState(1)
-  const postsPerPage = 3
+  const postsPerPage = 10
 
   const totalPages = Math.ceil(posts.length / postsPerPage)
   const indexOfLast = currPage * postsPerPage
