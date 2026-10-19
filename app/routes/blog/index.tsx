@@ -36,6 +36,14 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
       {currPosts.map(post => (
         <PostCard key={post.slug} post={post} />
       ))}
+
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currPage}
+          totalPages={totalPages}
+          onPageChange={page => setCurrPage(page)}
+        />
+      )}
     </div>
   )
 }
