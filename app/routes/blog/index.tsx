@@ -52,6 +52,11 @@ const BlogPage = ({ loaderData }: Route.ComponentProps) => {
           setCurrPage(1)
         }}
       />
+      <div className="space-y-8">
+        {currPosts.length === 0 && (
+          <p className="text-gray-400 text-center">No Posts Found</p>
+        )}
+      </div>
       {currPosts.map(post => (
         <PostCard key={post.slug} post={post} />
       ))}
