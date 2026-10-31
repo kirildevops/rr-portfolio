@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Route } from './+types/index'
 
-import type { Project } from '~/types'
+import type { Project, StrapiResponse, StrapiProject } from '~/types'
 
 import ProjectCard from '~/components/ProjectCard'
 import Pagination from '~/components/Pagination'
@@ -19,7 +19,7 @@ export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Project[] }> {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/projects?populate=*`)
-  const jsonPayload = await res.json()
+  const jsonPayload: StrapiResponse<StrapiProject> = await res.json()
   const data = jsonPayload.data
 
   const projects = data.map(item => ({
