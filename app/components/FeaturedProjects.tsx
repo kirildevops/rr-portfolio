@@ -7,8 +7,8 @@ interface FeaturedProjectsProps {
 }
 
 const FeaturedProjects = ({ projects, count }: FeaturedProjectsProps) => {
-  const feat = projects.filter(p => p.featured === true)
-  const featured = feat.slice(0, count)
+  if (projects.length === 0) return null
+  const featured = projects.slice(0, count)
   return (
     <section>
       <h2 className="text-2xl font-bold mb-6 text-gray-200">
