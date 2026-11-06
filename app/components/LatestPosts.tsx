@@ -1,13 +1,13 @@
-import type { PostMeta } from '~/types'
+import type { Post } from '~/types'
 import PostCard from './PostCard'
 
 interface LatestPostsProps {
-  posts: PostMeta[]
+  posts: Post[]
   count?: number
 }
 
 const LatestPosts = ({ posts, count = 3 }: LatestPostsProps) => {
-  const sorted = [...posts].sort((a: PostMeta, b: PostMeta) => {
+  const sorted = [...posts].sort((a: Post, b: Post) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
 
